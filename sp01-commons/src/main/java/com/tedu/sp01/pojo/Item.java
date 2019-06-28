@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Item {
-	//房贷首付
+	
 	//版本控制
 	private Integer id;
 	private String name;
