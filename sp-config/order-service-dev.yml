@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: order-service
+    
+server:
+  port: 8201
+
+
+#eureka.instance.lease-renewal-interval-in-seconds
+#心跳间隔时间，默认 30 秒
+#defaultZone，默认位置，可以修改为具体地理位置，比如：beiJing, shangHai, shenZhen 等，表示 eureka 服务器的部署位置
+#eureka.client.registry-fetch-interval-seconds
+#拉取注册信息间隔时间，默认 30 秒  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka,http://eureka1:2002/eureka
+#启用hystrix
+feign:
+  hystrix:
+    enabled: true
+#暴露端点   
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+---
+spring:
+  profiles: order1
+  
+server:
+  port: 8201
+  
+---
+spring:
+  profiles: order2
+  
+server:
+  port: 8202
